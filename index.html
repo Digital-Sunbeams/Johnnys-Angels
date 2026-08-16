@@ -234,8 +234,12 @@ p{margin:0 0 1.1em}
 .on-dark .checks li::before{border-color:var(--brass)}
 
 /* ============================ QUOTES ============================ */
-.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:26px;margin-top:48px}
-.quote{background:#FDF7F3;border-radius:var(--r);padding:34px 30px;border-top:3px solid var(--brass)}
+.quotes{columns:3;column-gap:26px;margin-top:48px}
+@media (max-width:900px){ .quotes{columns:2} }
+@media (max-width:620px){ .quotes{columns:1} }
+.quote{background:#FDF7F3;border-radius:var(--r);padding:34px 30px;border-top:3px solid var(--brass);
+  break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;
+  display:inline-block;width:100%;margin:0 0 26px}
 .quote p{font-family:var(--serif);font-size:1.165rem;line-height:1.5;font-style:italic;color:var(--velvet);font-variation-settings:'SOFT' 50,'WONK' 1}
 .quote cite{display:block;font-style:normal;font-size:.86rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-top:16px}
 
@@ -434,7 +438,7 @@ p{margin:0 0 1.1em}
         <p class="hero__sub">Johnny's Angels is a small-dog daycare and boarding home in Summerlin: One caregiver, a few dogs, and a day built around your dog in particular.</p>
         <div class="btn-row">
           <a href="#visit" data-go="visit" class="btn btn--brass">Book a meet-and-greet</a>
-          <a href="tel:+17025550139" class="btn btn--outline-light">Call (702) 555-0139</a>
+          <a href="tel:+17024014725" class="btn btn--outline-light">Call 702-401-4725</a>
         </div>
         <div class="hero__proof">
           <span><b>$30</b> a day</span>
@@ -595,8 +599,7 @@ p{margin:0 0 1.1em}
     </div>
   </div>
 
-  <!-- QUOTES, PLACEHOLDER. Names, dogs and quotes are all invented.
-       Replace with real client reviews (with permission) before this gets real traffic. -->
+  <!-- Real client reviews. -->
   <div class="section section--tight on-sand">
     <div class="wrap">
       <div class="center" data-reveal>
@@ -605,16 +608,28 @@ p{margin:0 0 1.1em}
       </div>
       <div class="quotes" data-reveal>
         <div class="quote">
-          <p>She sends a photo every afternoon and I've stopped worrying about him entirely. He pulls me toward the door at drop-off now.</p>
-          <cite>Dave N, Summerlin</cite>
+          <p>Natasha is absolutely amazing! Her attention to detail and love … is like no other! She loves these boys like they are her own! She always goes above and beyond. I will continue to use her services as well as let others know about her! Thank you again for all you do! Don’t get too popular so I can’t book you lol. 😂</p>
+          <cite>Chelsie D.</cite>
         </div>
         <div class="quote">
-          <p>Our girl is nine pounds and nervous around big dogs. This is the first place she's ever relaxed. Ten days of boarding and she came home like nothing happened.</p>
-          <cite>Jenny K. &amp; Lulu, The Ridges</cite>
+          <p>Natasha is amazing. She took care of Zoey and Loki like they were her own. You can tell she genuinely loves animals and has such a calm, sweet energy. I have total peace of mind knowing they were in good hands. Highly recommend her if you need someone trustworthy and caring to watch your pets!</p>
+          <cite>Robert K.</cite>
         </div>
         <div class="quote">
-          <p>She handles his medication without me having to remind her, and she actually texts back. That alone is worth it.</p>
-          <cite>Thomas R. &amp; Chico, Red Rock Country Club</cite>
+          <p>The best pet sitter in Vegas! My anxious pup felt right at home. Thank you, Natasha!</p>
+          <cite>Sarah L.</cite>
+        </div>
+        <div class="quote">
+          <p>Natasha is so loved by Ollie. Their relationship started in our park meeting while walking. They fell in love. Natasha let us know she cares for dogs and two years later they are best friends. He runs in circles when he finds out he’s going to stay with her. We are very grateful and recommend her services to everyone whole heartedly</p>
+          <cite>Arlene and Rick</cite>
+        </div>
+        <div class="quote">
+          <p>Our dog Rocky as many pet owners is like our child and the heart of our family. He was a rescue from the streets and has trust issues. Natasha quickly opened Rocky up and they truly became best friends. All I have to do is say her name and our Rocky goes crazy in a way like nobody else. We call her the dog whisperer. Natasha is always welcoming and can be depended on like true family. We most humbly recommend her with your little angel</p>
+          <cite>Elizabeth</cite>
+        </div>
+        <div class="quote">
+          <p>5 stars!!! My fur babies are dear to me. I was immediately impressed with Natasha’s connection with my dogs and knew I chose well. I highly recommend her services. You will see, she loves what she does.</p>
+          <cite>Victor H.</cite>
         </div>
       </div>
     </div>
@@ -626,7 +641,7 @@ p{margin:0 0 1.1em}
       <p>Meet-and-greets are free and take about twenty minutes. Bring your dog.</p>
       <div class="btn-row" style="justify-content:center">
         <a href="#visit" data-go="visit" class="btn btn--light">Request a visit</a>
-        <a href="sms:+17025550139" class="btn btn--outline-light">Text (702) 555-0139</a>
+        <a href="sms:+17024014725" class="btn btn--outline-light">Text 702-401-4725</a>
       </div>
     </div>
   </div>
@@ -780,7 +795,7 @@ p{margin:0 0 1.1em}
       <p>Send them over and you'll hear back the same day with a yes or a no, not a quote form.</p>
       <div class="btn-row" style="justify-content:center">
         <a href="#visit" data-go="visit" class="btn btn--light">Check my dates</a>
-        <a href="tel:+17025550139" class="btn btn--outline-light">Call (702) 555-0139</a>
+        <a href="tel:+17024014725" class="btn btn--outline-light">Call 702-401-4725</a>
       </div>
     </div>
   </div>
@@ -859,7 +874,7 @@ p{margin:0 0 1.1em}
       <div data-reveal>
         <div class="contact-card">
           <div class="contact-line">
-            <div><b>Call or text</b><a href="tel:+17025550139">(702) 555-0139</a></div>
+            <div><b>Call or text</b><a href="tel:+17024014725">702-401-4725</a></div>
           </div>
           <div class="contact-line">
             <div><b>Email</b><a href="mailto:Johnnysangels@gmail.com">Johnnysangels@gmail.com</a></div>
@@ -874,8 +889,8 @@ p{margin:0 0 1.1em}
             <div><b>Boarding</b><span>Seven days a week, including holidays</span></div>
           </div>
           <div class="btn-row" style="margin-top:22px">
-            <a href="sms:+17025550139" class="btn btn--primary btn--sm">Text now</a>
-            <a href="tel:+17025550139" class="btn btn--ghost btn--sm">Call now</a>
+            <a href="sms:+17024014725" class="btn btn--primary btn--sm">Text now</a>
+            <a href="tel:+17024014725" class="btn btn--ghost btn--sm">Call now</a>
           </div>
         </div>
       </div>
@@ -1036,8 +1051,8 @@ p{margin:0 0 1.1em}
       </div>
       <div>
         <h4>Get in touch</h4>
-        <a href="tel:+17025550139">(702) 555-0139</a>
-        <a href="sms:+17025550139">Send a text</a>
+        <a href="tel:+17024014725">702-401-4725</a>
+        <a href="sms:+17024014725">Send a text</a>
         <a href="mailto:Johnnysangels@gmail.com">Johnnysangels@gmail.com</a>
         <a href="#visit" data-go="visit">Book a meet-and-greet</a>
       </div>
@@ -1055,8 +1070,8 @@ p{margin:0 0 1.1em}
 </footer>
 
 <div class="callbar">
-  <a href="tel:+17025550139">Call</a>
-  <a href="sms:+17025550139">Text</a>
+  <a href="tel:+17024014725">Call</a>
+  <a href="sms:+17024014725">Text</a>
   <a href="#visit" data-go="visit" class="callbar__go">Book a visit</a>
 </div>
 
@@ -1154,7 +1169,7 @@ p{margin:0 0 1.1em}
     done.className = 'sent';
     done.innerHTML = '<h3>Your email is open and ready to send.</h3>'
       + '<p>Hit send in your mail app and you\'ll hear back the same day. '
-      + 'If nothing opened, text <a href="sms:+17025550139">(702) 555-0139</a> instead. It\'s faster anyway.</p>';
+      + 'If nothing opened, text <a href="sms:+17024014725">702-401-4725</a> instead. It\'s faster anyway.</p>';
     form.replaceWith(done);
   });
 
