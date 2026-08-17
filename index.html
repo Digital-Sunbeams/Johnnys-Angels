@@ -877,9 +877,6 @@ p{margin:0 0 1.1em}
             <div><b>Call or text</b><a href="tel:+17024014725">702-401-4725</a></div>
           </div>
           <div class="contact-line">
-            <div><b>Email</b><a href="mailto:Johnnysangels@gmail.com">Johnnysangels@gmail.com</a></div>
-          </div>
-          <div class="contact-line">
             <div><b>Where</b><span>Summerlin, Las Vegas NV<br>Exact address shared when you book</span></div>
           </div>
           <div class="contact-line">
@@ -909,16 +906,6 @@ p{margin:0 0 1.1em}
           </div>
           <div class="field-row">
             <div class="field">
-              <label for="f-phone">Phone</label>
-              <input id="f-phone" name="phone" type="tel" required autocomplete="tel">
-            </div>
-            <div class="field">
-              <label for="f-email">Email</label>
-              <input id="f-email" name="email" type="email" autocomplete="email">
-            </div>
-          </div>
-          <div class="field-row">
-            <div class="field">
               <label for="f-need">What you need</label>
               <select id="f-need" name="need">
                 <option>Daycare, regular days</option>
@@ -938,7 +925,7 @@ p{margin:0 0 1.1em}
             <textarea id="f-msg" name="message" placeholder="Dates you need, medication, how he is with other dogs, anything at all."></textarea>
           </div>
           <button type="submit" class="btn btn--primary" style="width:100%">Send request</button>
-          <p class="form-note">You'll usually hear back the same day. If it's urgent, texting is fastest.</p>
+          <p class="form-note">This opens a ready-to-send text to Natasha. You'll usually hear back the same day.</p>
         </form>
       </div>
 
@@ -988,7 +975,7 @@ p{margin:0 0 1.1em}
         </details>
         <details>
           <summary>What do I need to bring the first day?</summary>
-          <p>Food portioned for the day, any medication with instructions, and their leash. Vaccine records can be emailed ahead of time. Beds, bowls, towels, and toys are already here.</p>
+          <p>Food portioned for the day, any medication with instructions, and their leash. Vaccine records can be texted over ahead of time. Beds, bowls, towels, and toys are already here.</p>
         </details>
         <details>
           <summary>What vaccines do you require?</summary>
@@ -1053,7 +1040,6 @@ p{margin:0 0 1.1em}
         <h4>Get in touch</h4>
         <a href="tel:+17024014725">702-401-4725</a>
         <a href="sms:+17024014725">Send a text</a>
-        <a href="mailto:Johnnysangels@gmail.com">Johnnysangels@gmail.com</a>
         <a href="#visit" data-go="visit">Book a meet-and-greet</a>
       </div>
     </div>
@@ -1152,24 +1138,24 @@ p{margin:0 0 1.1em}
   if(form) form.addEventListener('submit', function(e){
     e.preventDefault();
     var d = new FormData(form), get = function(k){ return (d.get(k)||'').toString().trim(); };
-    var body = [
+    var lines = [
+      'Hi Natasha! I\'d like to book a meet-and-greet.',
       'Name: '+get('name'),
-      "Dog's name: "+get('dog'),
-      'Phone: '+get('phone'),
-      'Email: '+get('email'),
-      'Looking for: '+get('need'),
-      'Breed & weight: '+get('weight'),
-      '',
-      get('message')
-    ].join('\n');
-    window.location.href = 'mailto:Johnnysangels@gmail.com'
-      + '?subject=' + encodeURIComponent('Meet-and-greet request, ' + get('dog'))
-      + '&body=' + encodeURIComponent(body);
+      "Dog: "+get('dog'),
+      'Looking for: '+get('need')
+    ];
+    if(get('weight')) lines.push('Breed & weight: '+get('weight'));
+    if(get('message')) lines.push(get('message'));
+    var body = lines.join('\n');
+    // iOS uses "&body=", Android uses "?body=". Detect and build accordingly.
+    var ios = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent);
+    window.location.href = 'sms:+17024014725' + (ios ? '&body=' : '?body=') + encodeURIComponent(body);
     var done = document.createElement('div');
     done.className = 'sent';
-    done.innerHTML = '<h3>Your email is open and ready to send.</h3>'
-      + '<p>Hit send in your mail app and you\'ll hear back the same day. '
-      + 'If nothing opened, text <a href="sms:+17024014725">702-401-4725</a> instead. It\'s faster anyway.</p>';
+    done.innerHTML = '<h3>Your text is ready to send.</h3>'
+      + '<p>Your Messages app should have opened with everything filled in. Just hit send and Natasha will '
+      + 'get back to you the same day. If nothing opened, text her directly at '
+      + '<a href="sms:+17024014725">702-401-4725</a>.</p>';
     form.replaceWith(done);
   });
 
